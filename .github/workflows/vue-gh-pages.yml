@@ -54,7 +54,7 @@ jobs:
 
       - name: Install dependencies
         # run: ${{ steps.pkgman.outputs.package_manager }} install
-        run: npm ci
+        run: npm install
 
       - name: Generate
         run: npm run build
