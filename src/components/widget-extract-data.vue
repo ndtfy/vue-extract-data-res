@@ -78,7 +78,7 @@ const output = computed(() => {
 
 const prompt = ref('')
 
-const mode = ref([])
+const mode = ref([] as String[])
 
 const modeList = ref([
   ['tab',         'Tab'],
@@ -102,11 +102,11 @@ const regexp = ref('')
 
 function clear() {
   input.value = '';
-  document.querySelector('.input-box').focus();
+  (window.document.querySelector('.input-box') as HTMLElement)?.focus();
 }
 
 function copy() {
-  navigator.clipboard.writeText( output.value );
+  navigator.clipboard.writeText(output.value);
 }
 
 </script>
