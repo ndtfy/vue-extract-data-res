@@ -12,7 +12,7 @@ on:
 
 # Add write workflow permissions
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
