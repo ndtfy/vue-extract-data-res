@@ -53,7 +53,8 @@ jobs:
           cache: ${{ steps.pkgman.outputs.cache }}
 
       - name: Install dependencies
-        run: ${{ steps.pkgman.outputs.package_manager }} install
+        # run: ${{ steps.pkgman.outputs.package_manager }} install
+        run: npm ci
 
       - name: Generate
         run: npm run build
