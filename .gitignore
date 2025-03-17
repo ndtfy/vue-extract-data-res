@@ -36,5 +36,6 @@ _res
 *.ppr
 *cmd.lnk
 node_http_server*
+compose*
 package-lock.json
-favicon.ico
+test_*.html

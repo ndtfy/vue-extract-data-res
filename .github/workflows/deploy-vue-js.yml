@@ -1,4 +1,4 @@
-name: Build Vue
+name: Deploy Vue
 on:
   # Runs on pushes targeting the default branch
   push:
@@ -35,9 +35,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: dir list
-        run: ls -l ./
-
       - name: npm install
         run: npm install
 
@@ -46,9 +43,6 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
-
-      - name: dir list
-        run: ls -l ./
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -59,5 +53,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          milliseconds: 1000
