@@ -1,0 +1,14 @@
+.pt-3 {
+  padding: 12px 0px 0px 0px;
+}
+.mr-auto {
+  margin-right: auto;
+}
+.truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.whitespace-nowrap {
+  white-space: nowrap;
+}
