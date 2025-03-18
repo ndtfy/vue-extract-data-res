@@ -11,8 +11,6 @@
   --navbar-top-dropdown-background-color-hover: #dfdfff;
 
   --navbar-bottom-background-color: #ecf3fe;
-
-  --debug-background-color: #ffa;
 }
 
 :root.dark-mode {
@@ -24,6 +22,4 @@
   --navbar-top-dropdown-background-color-hover: #dfdfff;
 
   --navbar-bottom-background-color: #3c3c3c;
-
-  --debug-background-color: #115;
 }

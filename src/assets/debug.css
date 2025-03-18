@@ -1,0 +1,11 @@
+:root {
+  --debug-background-color: #ffa;
+}
+
+:root.dark-mode {
+  --debug-background-color: #115;
+}
+
+div.debug {
+  background-color: var(--debug-background-color)
+}
