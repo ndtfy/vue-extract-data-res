@@ -21,6 +21,6 @@ export default defineConfig({
 //  host: true,
 //  port: 8000,
   },
-  base: require('path').basename(__dirname)
-//   base: __dirname.split("/").pop()
+//base: require('path').basename(__dirname)
+  base: __dirname.split("/").pop()
 })
