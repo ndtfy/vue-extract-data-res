@@ -19,5 +19,5 @@ export default defineConfig({
 //  host: true,
 //  port: 8000,
   },
-  base: '/vue-extract-data/'
+  base: '/vue-extract-data-res/'
 })
