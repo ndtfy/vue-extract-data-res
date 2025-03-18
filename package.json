@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build_root": "vite build --config vite.config.root.js",
+    "build_base": "vite build --config vite.config.base.js",
     "preview": "vite preview"
   },
   "dependencies": {
