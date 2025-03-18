@@ -4,6 +4,8 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
+console.log(__dirname.split("\\").pop())
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -19,5 +21,6 @@ export default defineConfig({
 //  host: true,
 //  port: 8000,
   },
-  base: '/vue-extract-data/'
+  base: require('path').basename(__dirname)
+//   base: __dirname.split("/").pop()
 })
