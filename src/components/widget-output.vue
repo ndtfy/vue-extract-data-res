@@ -50,4 +50,7 @@ const { output, prompt } = toRefs(props);
   ol li::marker {
     color: blue;
   }
+  .dark ol li::marker {
+    color: #9e9eff;
+  }
 </style>

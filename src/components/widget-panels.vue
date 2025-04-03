@@ -71,6 +71,9 @@ const { width, height } = toRefs(props);
     background-color: #ddd;
     gap: 4px;
   }
+  .dark .bar {
+    background-color: #555;
+  }
   .bar:has(*) {
     border: 4px solid transparent;
   }

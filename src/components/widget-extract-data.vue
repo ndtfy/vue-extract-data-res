@@ -188,7 +188,7 @@ function insertTestData() {
     </div>
   </div>
 
-  <div v-if="env.DEV" class="whitespace-nowrap" style="padding: 16px; background-color: var(--debug-background-color)">
+  <div v-if="env.DEV" class="p-4 bg-warning dark:bg-warning-dark whitespace-nowrap">
     <b><i @click="console.log(env)">*** Dev ***</i></b>
     <div>
       <button type="button" @click="insertTestData">Insert test data</button>
@@ -196,6 +196,19 @@ function insertTestData() {
     <b>Conversion options: {{ mode }}</b>
   </div>
 </template>
+
+<style>
+  :root {
+    --button-clear-color: white;
+    --button-clear-background-color: tomato;
+    --button-clear-background-color-hover: #ee5236;
+  }
+  :root.dark {
+    --button-clear-color: white;
+    --button-clear-background-color: #b81c00;
+    --button-clear-background-color-hover: #c92d11;
+  }
+</style>
 
 <style scoped>
   textarea {
@@ -207,8 +220,6 @@ function insertTestData() {
     border: 1px solid #ccc;
     outline: 0;
     border-radius: 10px;
-    color: var(--color-text);
-    background-color: var(--color-background);
   }
   textarea:focus {
     box-shadow: 0 0 15px 5px #b0e0ee;
@@ -259,8 +270,8 @@ function insertTestData() {
     position: absolute;
     top: 0px;
     right: 0px;
-    color: white;
-    background-color: tomato;
+    color: var(--button-clear-color);
+    background-color: var(--button-clear-background-color);
     padding: 2px;
     display: block;
     width: 20px;
@@ -272,5 +283,8 @@ function insertTestData() {
     font-weight: normal;
     font-size: 12px;
     cursor: pointer;
+  }
+  .clear-button:hover::after {
+    background-color: var(--button-clear-background-color-hover);
   }
 </style>

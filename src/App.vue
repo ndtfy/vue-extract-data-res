@@ -4,9 +4,6 @@ import NavbarTop from '@/components/navbar-top.vue'
 import NavbarBottom from '@/components/navbar-bottom.vue'
 import WidgetExtractData from '@/components/widget-extract-data.vue'
 
-if ( import.meta.env.DEV )
-  import('@/assets/debug.css');
-
 </script>
 
 <template>

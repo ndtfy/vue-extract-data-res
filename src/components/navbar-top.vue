@@ -25,6 +25,25 @@ const switchTheme = ref();
   </header>
 </template>
 
+<style>
+  :root {
+    --navbar-top-color: #ffffff;
+    --navbar-top-background-color: #2f8f8f;
+    --navbar-top-background-color-hover: #9f7fef;
+    --navbar-top-dropdown-color: #000000;
+    --navbar-top-dropdown-background-color: #bfbfef;
+    --navbar-top-dropdown-background-color-hover: #dfdfff;
+  }
+  :root.dark {
+    --navbar-top-color: #ffffff;
+    --navbar-top-background-color: #2f8f8f;
+    --navbar-top-background-color-hover: #9f7fef;
+    --navbar-top-dropdown-color: #000000;
+    --navbar-top-dropdown-background-color: #bfbfef;
+    --navbar-top-dropdown-background-color-hover: #dfdfff;
+  }
+</style>
+
 <style scoped>
   header {
     position: sticky;

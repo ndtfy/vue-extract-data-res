@@ -1,13 +1,14 @@
 {
   "name": "vue-extract-data",
-  "version": "0.1.1",
-  "license": "MIT",
+  "version": "0.1",
+  "description": "",
+  "keywords": [],
   "homepage": "https://github.com/ndtfy/vue-extract-data",
+  "license": "MIT",
   "author": {
     "name": "Stan Ovchinnikov",
     "email": "lishnih@gmail.com"
   },
-  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
+    "unocss": "^66.1.0-beta.8",
     "vite": "^6.1.0",
     "vite-plugin-vue-devtools": "^7.7.2"
   }

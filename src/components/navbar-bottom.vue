@@ -7,11 +7,20 @@ const status = ref('\u200a'); // &hairsp;
 </script>
 
 <template>
-  <footer>
+  <footer class="navbar-bottom">
     <i class="truncate mr-auto">{{ status }}</i>
     <div></div>
   </footer>
 </template>
+
+<style>
+  :root {
+    --navbar-bottom-background-color: #ecf3fe;
+  }
+  :root.dark {
+    --navbar-bottom-background-color: #3c3c3c;
+  }
+</style>
 
 <style scoped>
   footer {
@@ -22,6 +31,5 @@ const status = ref('\u200a'); // &hairsp;
     align-items: center;
     padding: 4px 16px;
     z-index: 100;
-    background-color: var(--navbar-bottom-background-color);
   }
 </style>

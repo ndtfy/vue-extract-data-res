@@ -22,7 +22,7 @@ const { checked, onChange } = toRefs(props);
 </script>
 
 <template>
-  <input type="checkbox" :checked="checked" @change="onChange" />
+  <input type="checkbox" :checked @change="onChange" />
 </template>
 
 <style scoped>
