@@ -1,8 +1,6 @@
 <script setup>
 
-import { toRefs } from 'vue'
-
-const props = defineProps({
+const { output, prompt } = defineProps({
   output: {
     required: true
   },
@@ -12,13 +10,11 @@ const props = defineProps({
   }
 });
 
-const { output, prompt } = toRefs(props);
-
 </script>
 
 <template>
-  <i v-if="!output.length">{{ prompt }}</i>
   <div>
+    <i v-if="prompt">{{ prompt }}</i>
     <ol>
       <li v-for="val in output">{{ val }}</li>
     </ol>
@@ -27,11 +23,22 @@ const { output, prompt } = toRefs(props);
 
 <style scoped>
   div {
+    position: relative;
     flex-grow: 1;
     resize: vertical;
     overflow-y: auto;
     min-height: 200px;
     max-height: 60vh;
+  }
+  i {
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    padding: 4px 16px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .dark i {
+    background-color: rgba(0, 0, 0, 0.9);
   }
   ol {
     box-sizing: border-box;
@@ -51,6 +58,6 @@ const { output, prompt } = toRefs(props);
     color: blue;
   }
   .dark ol li::marker {
-    color: #9e9eff;
+    color: green;
   }
 </style>

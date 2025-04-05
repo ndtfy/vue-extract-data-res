@@ -68,10 +68,10 @@ const switchTheme = ref();
   li a,
   .dropbtn {
     display: inline-block;
-    color: var(--navbar-top-color);
     text-align: center;
     padding: 12px 16px;
     text-decoration: none;
+    color: var(--navbar-top-color);
   }
   li a:hover,
   .dropdown:hover .dropbtn {
@@ -83,19 +83,19 @@ const switchTheme = ref();
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--navbar-top-dropdown-background-color);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background-color: var(--navbar-top-dropdown-background-color);
   }
   .dropdown:hover .dropdown-content {
     display: block;
   }
   .dropdown-content a {
     display: block;
-    color: var(--navbar-top-dropdown-color);
     text-align: left;
     padding: 12px 16px;
     text-decoration: none;
+    color: var(--navbar-top-dropdown-color);
   }
   .dropdown-content a:hover {
     background-color: var(--navbar-top-dropdown-background-color-hover);

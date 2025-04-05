@@ -7,7 +7,7 @@ const status = ref('\u200a'); // &hairsp;
 </script>
 
 <template>
-  <footer class="navbar-bottom">
+  <footer>
     <i class="truncate mr-auto">{{ status }}</i>
     <div></div>
   </footer>
@@ -31,5 +31,6 @@ const status = ref('\u200a'); // &hairsp;
     align-items: center;
     padding: 4px 16px;
     z-index: 100;
+    background-color: var(--navbar-bottom-background-color);
   }
 </style>

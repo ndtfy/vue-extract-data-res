@@ -8,12 +8,24 @@ import WidgetOutput from '@/components/widget-output.vue'
 const env = ref(import.meta.env);
 
 const input = ref('');
+const prompt = ref('');
+
+const sorting = ref(0);
+const sortingOptions = ref({
+  [0]: 'Unsorted',
+  [1]: 'Ascending (A→Z)',
+  [2]: 'Descending (Z→A)',
+  [3]: 'Locale-specific (A→Z)',
+  [4]: 'Locale-specific (Z→A)'
+});
 
 const output = computed(() => {
   if ( !input.value ) {
-    prompt.value = 'No data';
+    prompt.value = 'No input data';
     return [];
   }
+
+  prompt.value = '';
 
   let res = input.value;
 
@@ -41,7 +53,9 @@ const output = computed(() => {
 
       case "symbols":
         if ( symbols.value )
-          res = res.replaceAll(symbols.value, '\n');
+          symbols.value.split('').forEach(symbol => {
+            res = res.replaceAll(symbol, '\n');
+          });
         break;
 
       case "subsequence":
@@ -76,13 +90,18 @@ const output = computed(() => {
   if ( mode.value.includes("duplicates") )
     resList = [...new Set(resList)];
 
-  if ( mode.value.includes("sort") )
+  // Sorting
+  if ( sorting.value == 1 )
     resList = resList.sort();
+  else if ( sorting.value == 2 )
+    resList = resList.sort().reverse();
+  else if ( sorting.value == 3 )
+    resList = resList.sort( (a, b) => a.localeCompare(b) );
+  else if ( sorting.value == 4 )
+    resList = resList.sort( (a, b) => - a.localeCompare(b) );
 
   return resList;
 });
-
-const prompt = ref('');
 
 const mode = ref(['empty', 'duplicates', 'trim']);
 
@@ -101,8 +120,6 @@ const modeList = ref([
   ['trim',        'Remove leading and trailing whitespace'],
   ['empty',       'Remove empty lines'],
   ['duplicates',  'Remove duplicates'],
-  ['-', ''],
-  ['sort',        'Sort'],
 ]);
 
 const symbols = ref('');
@@ -152,14 +169,17 @@ function insertTestData() {
     </template>
     <template #bar2>
       <button type="button" @click="copy" :disabled="!output.length">Copy</button>
+      <select v-model="sorting" class="ml-auto">
+        <option v-for="(value, key) in sortingOptions" :value="key">{{ value }}</option>
+      </select>
     </template>
     <template #pane2>
-      <WidgetOutput :output="output" :prompt="prompt" />
+      <WidgetOutput :output :prompt />
     </template>
   </WidgetPanels>
 
   <div class="whitespace-nowrap">
-    <b>Conversion options:</b>
+    <b>Split parameters:</b>
     <ul>
       <template v-for="item in modeList">
       <li v-if="item[1]">
@@ -188,12 +208,13 @@ function insertTestData() {
     </div>
   </div>
 
-  <div v-if="env.DEV" class="p-4 bg-warning dark:bg-warning-dark whitespace-nowrap">
+  <div v-if="env.DEV" class="p-4 bg-yellow/50 dark:bg-blue/50 whitespace-nowrap">
     <b><i @click="console.log(env)">*** Dev ***</i></b>
     <div>
       <button type="button" @click="insertTestData">Insert test data</button>
     </div>
-    <b>Conversion options: {{ mode }}</b>
+    <div><b @click="mode=[]">mode:</b> <i>{{ mode }}</i></div>
+    <div><b @click="sorting=0">sorting:</b> <i>{{ sorting }}</i></div>
   </div>
 </template>
 
@@ -217,15 +238,27 @@ function insertTestData() {
     resize: none;
     padding: 10px;
     width: 100%;
-    border: 1px solid #ccc;
     outline: 0;
     border-radius: 10px;
+    border: 1px solid #ccc;
+    color: var(--color-text);
+  }
+  .dark textarea {
+    border: 1px solid #777;
   }
   textarea:focus {
     box-shadow: 0 0 15px 5px #b0e0ee;
     border: 1px solid #bebede;
   }
+  .dark textarea:focus {
+    box-shadow: 0 0 15px 5px #50808e;
+    border: 1px solid #858565;
+  }
 
+  select {
+    padding: 1px 8px;
+    color: var(--color-text);
+  }
   ul {
     padding: 0px 20px;
     list-style-type: none;
@@ -234,27 +267,9 @@ function insertTestData() {
     padding: 0px 12px;
   }
 
-  textarea1 + span::before {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-  }
-  textarea1:invalid {
-    border: 1px solid yellow;
-  }
-  textarea1:invalid + span::before {
-    content: "✖";
-    color: red;
-  }
-  textarea1:valid + span::before {
-    content: "✓";
-    color: green;
-  }
-
   .input-box:not(:valid) ~ .clear-button {
     display: none;
   }
-
   .clear-button {
     position: absolute;
     top: 0px;
@@ -270,8 +285,6 @@ function insertTestData() {
     position: absolute;
     top: 0px;
     right: 0px;
-    color: var(--button-clear-color);
-    background-color: var(--button-clear-background-color);
     padding: 2px;
     display: block;
     width: 20px;
@@ -283,6 +296,8 @@ function insertTestData() {
     font-weight: normal;
     font-size: 12px;
     cursor: pointer;
+    color: var(--button-clear-color);
+    background-color: var(--button-clear-background-color);
   }
   .clear-button:hover::after {
     background-color: var(--button-clear-background-color-hover);
