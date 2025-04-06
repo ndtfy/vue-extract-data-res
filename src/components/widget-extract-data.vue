@@ -128,6 +128,8 @@ const regexp = ref('');
 
 function clear() {
   input.value = '';
+  console.log( document.querySelector('.input-box').value );
+  document.querySelector('.input-box').value = '';
   document.querySelector('.input-box').focus();
 }
 
