@@ -127,10 +127,11 @@ const subsequence = ref('');
 const regexp = ref('');
 
 function clear() {
-  input.value = '';
-  console.log( document.querySelector('.input-box').value );
-  document.querySelector('.input-box').value = '';
-  document.querySelector('.input-box').focus();
+//input.value = '';
+  const inputBox = document.querySelector('.input-box');
+  console.log( inputBox.value );
+  inputBox.value = '';
+  inputBox.focus();
 }
 
 function copy() {
